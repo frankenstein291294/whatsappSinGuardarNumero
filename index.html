@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+  <style>
+    .container {
+      width:90%;
+      margin:0 auto;
+    }
+
+    .mb {
+      margin-bottom:10px;
+    }
+
+    input {
+      width:100%;
+      border:1 px solid rgb( 255 255 255 / 60% );
+      padding:5px;
+    }
+
+    .whatsapp {
+      display:block;
+      background-color:#349F03;
+      border:1px solid rgb( 0 0 0 / 60% );
+      color:#fff;
+      font-weight:bold;
+      padding:10px;
+      text-decoration:none;
+    }
+
+    form {
+      text-align:center;
+    }
+
+    button {
+      padding:10px;
+      background-color:#1978D6;
+      border:1px solid rgb( 0 0 0 / 60% );
+      color:#fff;
+      font-weight:bold;
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="container">
+    <!-- <form> -->
+      <input type="number" class="mb" id="number" placeholder="Numero">
+      <input type="text" class="mb" id="message" placeholder="Mensaje">
+      <button id="addNumber">Agregar</button>
+      <hr class="mb">
+      
+      <a title="Enviar mensaje" class="whatsapp" id="link" rel="noopener" target="_blank">Enviar WhatsApp</a>
+    <!-- </form> -->
+  </div>
+
+  <script>
+
+    const btn_add = document.getElementById( 'addNumber' );
+    const link = document.getElementById( 'link' );
+
+    const msg = 'https://api.whatsapp.com/send?phone=+526565992892&text=Hola';
+
+    btn_add.addEventListener( 'click', () => {
+
+      if ( document.getElementById( 'number' ).value == "" || document.getElementById( 'message' ) == "" ) {
+
+        alert( 'Enter number and message' );
+
+      } else {
+
+        link.setAttribute( 'href', `https://api.whatsapp.com/send?phone=+52${ document.getElementById( 'number' ).value }&text=${ document.getElementById( 'message' ).value }` )
+        alert( 'Agregado' );
+
+      }
+
+    })
+
+    link.addEventListener( 'click', ( e ) => {
+
+      if ( document.getElementById( 'number' ).value == "" || document.getElementById( 'message' ) == "" ) {
+
+        alert( 'Enter number and message' );
+
+      } else {
+
+        document.getElementById( 'number' ).value = ""
+        document.getElementById( 'message' ).value = ""
+
+      }
+
+    })
+
+    
+
+  </script>
+</body>
+</html>
